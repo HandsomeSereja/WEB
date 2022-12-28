@@ -1,0 +1,133 @@
+*,*:after,*:before{
+	padding: 0px;
+	margin: 0px;
+
+}
+
+body{
+	background-color: #87CEFA;
+}
+
+textarea:focus{
+	outline: none;
+}
+
+.header{
+	display: inline-flex;
+	position: relative;
+	background-color: #708090;
+	height: 80px;
+	width: 100%;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.nav{
+	position: absolute;
+	right: 50px;
+	float: right;
+	top:20px;
+	display: flex;
+	justify-content: space-between;
+	width: 400px;
+}
+
+.nav_link{
+	text-align: center;
+	padding:6px; 
+	font-size: 20px;
+	text-decoration: none;
+	border:solid;
+	color:#F5DEB3;
+	border-color: #708090;
+	border-width: 3px;
+	border-radius: 10px;
+}
+
+.nav_link:hover{
+	border-color: #F5DEB3;
+	transition-duration: 0.5s;
+}
+
+.contein{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.log{
+    margin: 0 auto;
+    background-color: #F5DEB3;
+    position: relative;
+    height: 100px;
+    width: 300px;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.inp{
+    position:absolute;
+    left: 60px;
+}
+
+.chat_window{
+	position: relative;
+	margin: 0 auto;
+	height: 500px;
+	width: 800px;
+	background-color: #FAFAD2;
+	border: solid;
+    border-color: black;
+    border-width: 1px;
+}
+.message_form{
+	margin: auto;
+	display: inline-flex;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+.message_box{
+	resize: none;
+	height: 80px;
+	width: 700px;
+	background-color: white;
+	border:none;
+	border-top: solid;
+	border-top-width: 1px; 
+}
+.message_button{
+	font-family: 'Montserrat Alternates', sans-serif;
+	height: 80px;
+	width: 100px;
+	border:none;
+	border-top: solid;
+	border-top-width: 1px; 
+}
+.chat_h{
+	font-family: 'Montserrat Alternates', sans-serif;
+	margin: auto;
+	font-size: 30px;
+}
+.message_in{
+	text-align: left;
+	width: 800px;
+	background-color: #E6E6FA;
+	font-size: 16px;
+	margin-top:3px;
+	border: none;
+    border-top: solid;
+	border-top-width: 1px; 
+	border-bottom: solid;
+	border-bottom-width: 1px; 
+}
+.message_out{
+	text-align: right;
+	width: 800px;
+	background-color: #EE82EE;
+	font-size: 16px;
+	margin-top:3px;
+	border: solid;
+    border-color: black;
+    border-width: 1px;
+}
