@@ -8,13 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <title>{{name}}</title>
 </head>
 <body>
     <div class="contein">
-        <h1>ВХОД ВЫПОЛНЕН УСПЕШНО</h1>
-       <a href="user/{{name}}">ПРОДОЛЖИТЬ</a>
+       <h1 class="log_h">Вход выполнен успешно</h1>      
+       <a class="inp_a" href="user/{{name}}">ПРОДОЛЖИТЬ</a>
     </div>
 </body>
 </html>

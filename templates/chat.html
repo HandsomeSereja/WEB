@@ -8,14 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <title>Chat with {{user2}}</title>
+    
 </head>
 <body>
     <header class="header">
         <div class="chat_h">
             Чат с {{user2}}
         </div>
+        <span class="chat_h" id="roll">0</span>
     </header>
     <div class="contein">
         <div class="chat_window">
@@ -23,23 +25,26 @@
             {% if el.user1 == user1%}
             {% if el.user2 == user2%}
             <div class="message_in">
-                {{el.text}}
+                <p class="mes_text">{{el.text}}</p>
+                <p class="mes_time">{{el.date}}</p>
             </div>
             {% endif%}
             {% endif%}
             {% if el.user1 == user2%}
             {% if el.user2 == user1%}
             <div class="message_out">
-                {{el.text}}
+                <p class="mes_text">{{el.text}}</p>
+                <p class="mes_time">{{el.date}}</p>
             </div>
             {% endif%}
             {% endif%}
             {% endfor %}
-            <form method="post" class="message_form">
-                <textarea class="message_box" name="text" autofocus></textarea>
+            <form action="{{url_for('chat',user1=user1,user2=user2)}}" method="post" class="message_form">
+                <textarea class="message_box" id="message_box" name="text" onclick="del_text()" required>Введите сообщение...</textarea>
                 <p><input class="message_button" type="submit" value="Отправить" />
             </form>                
         </div>
     </div>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
 </body>
 </html>

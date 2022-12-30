@@ -8,24 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <title>Отличный сайт</title>
 </head>
 <body>
-    <header class="header">
-
-    </header>
-
     <div class="contein">
-        {{name}}
-        <div class="log">
-            <form action="{{url_for('reg')}}" method="post" class="form-contact">
-                <p>Логин:<input class = "inp" type="text" value = "" name="login" required />
-                <p>Пароль:<input type="text" class = "inp" value = "" name="psw" required /> 
-                <p>Никнейм:<input type="text" class = "inp" value = "" name="username" required />
-                <p><input class="inp" type="submit" value="Регестрация" />
+        <h1 class="log_h">Регестрация пользователя</h1>
+            <form action="{{url_for('rege')}}" method="post" class="form_contact">
+                <div class="inp_p">Имя<input class = "inp_t" type="text"  value = "" name="username" required /></div>
+                <div class="inp_p">Логин<input class = "inp_t" type="text" value = "" name="login" required /></div>
+                <div class="inp_p">Пароль<input class = "inp_t" type="text"  value = "" name="psw" required /></div>
+                <div class="inp_p"><input class="inp" type="submit" value="Зарегестрироваться" /></div>
             </form>
-        </div>
     </div>
 </body>
 </html>
