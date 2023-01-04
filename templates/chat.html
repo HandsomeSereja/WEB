@@ -13,38 +13,30 @@
     
 </head>
 <body>
+    <script type="text/javascript">
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
     <header class="header">
         <div class="chat_h">
             Чат с {{user2}}
         </div>
         <span class="chat_h" id="roll">0</span>
     </header>
-    <div class="contein">
-        <div class="chat_window">
-            {% for el in info %}
-            {% if el.user1 == user1%}
-            {% if el.user2 == user2%}
-            <div class="message_in">
-                <p class="mes_text">{{el.text}}</p>
-                <p class="mes_time">{{el.date}}</p>
-            </div>
-            {% endif%}
-            {% endif%}
-            {% if el.user1 == user2%}
-            {% if el.user2 == user1%}
-            <div class="message_out">
-                <p class="mes_text">{{el.text}}</p>
-                <p class="mes_time">{{el.date}}</p>
-            </div>
-            {% endif%}
-            {% endif%}
-            {% endfor %}
-            <form action="{{url_for('chat',user1=user1,user2=user2)}}" method="post" class="message_form">
+    <div  class="contein">
+        <div class="chat_window" id="mes_box">
+            <ol id="ol">
+            </ol>
+            <form action="" class="message_form" name="form_chat" onsubmit="return false;">
                 <textarea class="message_box" id="message_box" name="text" onclick="del_text()" required>Введите сообщение...</textarea>
-                <p><input class="message_button" type="submit" value="Отправить" />
+                <p><input class="message_button" id="mes_sub" value="Отправить" onclick="send_data()" />
             </form>                
         </div>
     </div>
+    <span class="hide" id="user1">{{user1}}</span>
+    <span class="hide" id="user2">{{user2}}</span>
     <script src="{{url_for('static', filename='script.js')}}"></script>
+    
 </body>
 </html>

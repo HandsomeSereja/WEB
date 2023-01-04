@@ -1,7 +1,9 @@
-from flask import Flask, render_template, url_for, request, redirect, flash
+from flask import Flask, render_template, url_for, request, redirect, flash, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import json
+from sqlalchemy_serializer import SerializerMixin
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -15,12 +17,13 @@ class Users(db.Model):
     username = db.Column(db.String(30), nullable=True)
 
 
-class message(db.Model):
+class message(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(500), nullable=True)
     user1 = db.Column(db.String(30), nullable=True)
     user2 = db.Column(db.String(30), nullable=True)
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    serialize_only = ('text', 'user1', 'user2')
 
 
 @app.route('/index', methods=("POST", "GET"))
@@ -39,7 +42,7 @@ def index():
                         return render_template("user.html", name=name)
                     else:
                         print("error")
-                        flash('Ошибка авторизации')c
+                        flash('Ошибка авторизации')
             else:
                     print("error")
                     flash('Ошибка авторизации')
@@ -49,7 +52,7 @@ def index():
 
 
 @app.route('/reg', methods=("POST", "GET"))
-def rege():
+def reg():
     if request.method == "POST":
         try:
             u = Users(login=request.form['login'], username=request.form['username'], psw=request.form['psw'])
@@ -75,22 +78,32 @@ def user(path):
 
 @app.route('/chat/<user1>/<user2>', methods=("POST", "GET"))
 def chat(user1, user2):
-    info = []
-    info = message.query.order_by(message.date).all()
     if request.method == "POST":
-        print(request.form['text'])
-        m = message(text=request.form['text'], user1=user1, user2=user2)
         try:
-            db.session.add(m)
+            u = message(text=request.json['text'], user1=request.json['user1'], user2=request.json['user2'])
+            db.session.add(u)
             db.session.flush()
             db.session.commit()
-            redirect(request.path)
         except:
             db.session.rollback()
             print("Ошибка добавления в бд")
-    return render_template("chat.html", user1=user1, user2=user2, info=info)
+    if request.method == "GET":
+        try:
+            print("отправка")
+            info = []
+            info = message.query.order_by(message.date).all()
+            print(info.to_dict)
+        except:
+            print("ошибка отправки")
+    return render_template("chat.html", user1=user1, user2=user2)
 
-
+@app.route('/api')
+def api():
+    data = []
+    for u in message.query.all():
+        data.append(u.text)
+    print(data)
+    return jsonify(data)
 
 
 if __name__ == "__main__":

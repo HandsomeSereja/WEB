@@ -12,6 +12,10 @@ textarea:focus{
 	outline: none;
 }
 
+.hide{
+	display: none;
+}
+
 .header{
 	display: inline-flex;
 	position: relative;
@@ -184,6 +188,20 @@ textarea:focus{
 	border: solid;
 	border-width: 1px;
 	border-radius: 5px;
+}
+.mes_li{
+	list-style-type: none;
+	position: relative;
+	padding: 2px;
+	text-align: left;
+	width: 400px;
+	background-color: #E6E6FA;
+	font-size: 16px;
+	margin-top:3px;
+	margin-left: 380px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
 }
 .mes_text{
 
