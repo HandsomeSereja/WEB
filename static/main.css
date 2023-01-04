@@ -123,11 +123,14 @@ textarea:focus{
 }
 
 .chat_window{
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	overflow-y: scroll;
 	position: relative;
 	margin: 0 auto;
 	height: 500px;
 	width: 800px;
-	background-color: #FAFAD2;
+	background-color: #FFFFE0;
 	border: solid;
     border-color: black;
     border-width: 1px;
@@ -135,7 +138,6 @@ textarea:focus{
 .message_form{
 	margin: auto;
 	display: inline-flex;
-	position: absolute;
 	bottom: 0px;
 	left: 0px;
 }
@@ -147,61 +149,60 @@ textarea:focus{
 	width: 690px;
 	background-color: white;
 	border:none;
-	border-top: solid;
-	border-top-width: 1px; 
+	border-bottom-left-radius: 10px; 
 }
 .message_button{
 	font-family: 'Montserrat Alternates', sans-serif;
 	height: 80px;
 	width: 100px;
 	border:none;
-	border-top: solid;
-	border-top-width: 1px; 
+	text-align: center;
+	border-bottom-right-radius: 10px; 
+}
+.message_button:focus{ 
+	outline:none;
+}
+.message_button:hover{
+	cursor: pointer;
+	background-color: #D8BFD8;
+	transition-duration: 0.5s;
 }
 .chat_h{
 	font-family: 'Montserrat Alternates', sans-serif;
 	margin: auto;
 	font-size: 30px;
 }
-.message_in{
-	position: relative;
-	padding: 2px;
-	text-align: left;
-	width: 400px;
-	background-color: #E6E6FA;
-	font-size: 16px;
-	margin-top:3px;
-	margin-left: 380px;
-    border: solid;
-    border-width: 1px;
-    border-radius: 5px;
-}
-.message_out{
-	position: relative;
-	padding: 2px;
-	text-align: left;
-	width: 400px;
-	background-color: #EE82EE;
-	font-size: 16px;
-	margin-left: 15px;
-	margin-top:3px;
-	border: solid;
-	border-width: 1px;
-	border-radius: 5px;
-}
-.mes_li{
+.mes_li_my{
+	word-break: break-all;
 	list-style-type: none;
 	position: relative;
-	padding: 2px;
+	padding: 3px;
 	text-align: left;
-	width: 400px;
-	background-color: #E6E6FA;
+	max-width: 350px;
+	background-color: #fced8b;
 	font-size: 16px;
 	margin-top:3px;
-	margin-left: 380px;
+	margin-left: 420px;
     border: solid;
     border-width: 1px;
-    border-radius: 5px;
+    border-radius: 10px;
+    border-bottom-right-radius: 0; 
+}
+.mes_li_he{
+	word-break: break-all; 
+	list-style-type: none;
+	position: relative;
+	padding: 3px;
+	text-align: left;
+	max-width: 350px;
+	background-color: #fff8cc;
+	font-size: 16px;
+	margin-top:3px;
+	margin-left: 10px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    border-bottom-left-radius: 0; 
 }
 .mes_text{
 

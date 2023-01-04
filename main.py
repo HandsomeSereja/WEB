@@ -87,21 +87,28 @@ def chat(user1, user2):
         except:
             db.session.rollback()
             print("Ошибка добавления в бд")
-    if request.method == "GET":
-        try:
-            print("отправка")
-            info = []
-            info = message.query.order_by(message.date).all()
-            print(info.to_dict)
-        except:
-            print("ошибка отправки")
     return render_template("chat.html", user1=user1, user2=user2)
 
-@app.route('/api')
-def api():
+@app.route('/api/<user1>/<user2>')
+def api(user1, user2):
     data = []
     for u in message.query.all():
-        data.append(u.text)
+        if (u.user1 == user1):
+            if (u.user2 == user2):
+                data.append(u.user1)
+                data.append(u.text)
+            else:
+                print()
+        else:
+            print()
+        if (u.user2 == user1):
+            if (u.user1 == user2):
+                data.append(u.user1)
+                data.append(u.text)
+            else:
+                print()
+        else:
+            print()
     print(data)
     return jsonify(data)
 

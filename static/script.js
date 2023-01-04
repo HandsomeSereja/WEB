@@ -1,3 +1,10 @@
+function del_text() {
+  document.getElementById("message_box").value = "";
+  document.getElementById("message_box").style.color = "black";
+}
+
+
+
 document.onwheel = function (event){
 	console.log(event)
 	if (event.deltaY > 0){
@@ -24,13 +31,15 @@ function send_data(){
   xhr.onload = () => {
   }
   xhr.send(JSON.stringify(data));
+  del_text();
 };
 
 dan=[];
 window.onload = setInterval(function() {
-      fetch('/api')
+      us = ({'user1':us1,'user2':us2})
+      fetch('/api/'+us1+'/'+us2)
         .then((response) => {
-            return response.json();
+            return response.json(us);
         })
         .then((myjson) => {
             console.log(myjson);
@@ -39,11 +48,17 @@ window.onload = setInterval(function() {
               console.log(dan);
             }
             else{
-                for (let i=dan.length; i < myjson.length; i++){
+                for (let i=dan.length; i < myjson.length;i++){
                   let liFirst = document.createElement('li');
-                  liFirst.className = "mes_li";
-                  liFirst.innerHTML = myjson[i];
-                  ol.append(liFirst);       
+                  if (myjson[i] == us1){
+                    liFirst.className = "mes_li_my";
+                  }else{
+                    liFirst.className = "mes_li_he";
+                  }
+                  mes = myjson[i]+ ": " +myjson[i+1];
+                  liFirst.innerHTML = mes;
+                  ol.append(liFirst);
+                  i++;       
               }
             }
             dan = myjson;

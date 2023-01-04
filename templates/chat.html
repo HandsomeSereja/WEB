@@ -13,30 +13,25 @@
     
 </head>
 <body>
-    <script type="text/javascript">
-        if ( window.history.replaceState ) {
-            window.history.replaceState( null, null, window.location.href );
-        }
-    </script>
     <header class="header">
         <div class="chat_h">
             Чат с {{user2}}
         </div>
-        <span class="chat_h" id="roll">0</span>
     </header>
     <div  class="contein">
         <div class="chat_window" id="mes_box">
-            <ol id="ol">
-            </ol>
-            <form action="" class="message_form" name="form_chat" onsubmit="return false;">
-                <textarea class="message_box" id="message_box" name="text" onclick="del_text()" required>Введите сообщение...</textarea>
-                <p><input class="message_button" id="mes_sub" value="Отправить" onclick="send_data()" />
-            </form>                
+            <ol id="ol"class="chat_ol">
+            </ol>            
         </div>
+        <form action="" class="message_form" name="form_chat" onsubmit="return false;">
+                <textarea class="message_box" id="message_box" name="text" onclick="del_text()" required>Введите сообщение...</textarea>
+                <p><input class="message_button" id="mes_sub" value="Отправить" onclick="send_data()" readonly />
+            </form>  
     </div>
     <span class="hide" id="user1">{{user1}}</span>
     <span class="hide" id="user2">{{user2}}</span>
     <script src="{{url_for('static', filename='script.js')}}"></script>
+
     
 </body>
 </html>
